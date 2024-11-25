@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Payroll System</h2>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="payroll.html">Payroll</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="logout.html">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Manage Payroll</h1>
+        </header>
+
+        <!-- Payroll Form -->
+        <form action="submit_payroll.php" method="POST">
+            <label for="employeeName">Employee Name</label>
+            <input type="text" id="employeeName" name="employeeName" required>
+
+            <label for="employeeID">Employee ID</label>
+            <input type="text" id="employeeID" name="employeeID" required>
+
+            <label for="salary">Salary</label>
+            <input type="number" id="salary" name="salary" required>
+
+            <label for="department">Department</label>
+            <select id="department" name="department" required>
+                <option value="">Select Department</option>
+                <option value="HR">HR</option>
+                <option value="Finance">Finance</option>
+                <option value="IT">IT</option>
+            </select>
+            <br><br>
+
+            <label for="payDate">Pay Date</label>
+            <input type="date" id="payDate" name="payDate" required>
+
+            <button type="submit">Submit Payroll</button>
+        </form>
+
+        <!-- Payroll Records Table -->
+        <div id="payrollRecords">
+            <h2>Payroll Records</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Employee ID</th>
+                        <th>Employee Department</th>
+                        <th>Salary</th>
+                        <th>Pay Date</th>
+                    </tr>
+                </thead>
+                <tbody id="payrollData">
+                    <!-- Payroll data will be dynamically populated via AJAX -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch payroll data
+        function fetchPayrollData() {
+            fetch('fetch_payroll.php')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('payrollData').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error fetching payroll data:', error);
+                });
+        }
+
+        // Fetch payroll data when the page loads
+        document.addEventListener('DOMContentLoaded', fetchPayrollData);
+    </script>
+</body>
+</html>

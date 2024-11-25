@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll Management Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/fontawesome.min.css"></script> -->
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Payroll System</h2>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="payroll.html">Payroll</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="logout.html">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Payroll Management System</h1>
+            <div class="user-info">
+            </div>
+        </header>
+
+        <section class="stats">
+            <div class="stat-box">
+                <h3>Total Employees</h3>
+                <p id="totalEmployees">120</p>
+            </div>
+            <div class="stat-box">
+                <h3>Total Payroll</h3>
+                <p id="totalPayroll">$15,000</p>
+            </div>
+        </section>
+            <br><br>
+        <section class="stats">
+            <div class="stat-box">
+                <h3>Total Expense</h3>
+                <p id="totalexpense">$5,250</p>
+            </div>
+            <div class="stat-box">
+                <h3>Total Investment</h3>
+                <p id="totalinvestment">$4,740</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
